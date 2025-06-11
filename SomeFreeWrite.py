@@ -1,23 +1,23 @@
-class Ship():
-    """
-    Ship model, for testing
-    """
-    def __init__(self, model, team):
-        self.model = model
-        self.team = team
 
-class Team():
-    def __init__(self, list_team):
-        self.list_team = list_team
+import time
 
 
-class Participants():
-    def __init__(self, name:str, work:str):
-        self.name = name
-        self.work = work
+def measure_time(parametr):
+    def real_decorator(func):
+        def wrapper(*args, **kwargs):
+            start = time.time()
+            func()
+            end = time.time()
+            return end - start
+        return wrapper
+    return real_decorator
 
-    def add_to_team(self, cls:Team):
-       crew = Team(self.name) 
-        
 
-#Не установлен смысл наследования
+@measure_time(parametr1 = "some_string")    #some_func = measure_time(parametr="some_string")(some_func)
+def some_func(*args, **kwargs):
+    time.sleep(5)
+    print("Я функция")
+
+if __name__ == "__main__":
+
+    print(some_func(), "сек")

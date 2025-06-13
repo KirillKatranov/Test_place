@@ -7,8 +7,10 @@ def measure_time(parametr):
         def wrapper(*args, **kwargs):
             start = time.time()
             nonlocal parametr 
-            parametr += "Wow"
-            print(parametr + "Wow")
+            if parametr == "POST":
+                parametr += "POST"
+            elif parametr == "GET":
+                parametr += "GET"
             func(parametr)
             end = time.time()
             return end - start
@@ -16,7 +18,7 @@ def measure_time(parametr):
     return real_decorator
 
 
-@measure_time(parametr = "some_string")    #some_func = measure_time(parametr="some_string")(some_func)
+@measure_time(parametr = "GET")    #some_func = measure_time(parametr="some_string")(some_func)
 def some_func(*args, **kwargs):
     time.sleep(5)
     print("Я функция")

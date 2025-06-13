@@ -1,19 +1,13 @@
-#Позиционные аргументы не могут стоять после kwargs аргументов
+#Позиционные аргументы не могут стоять после kwargs аргументов, сразу подсветка синтаксиса
+#Позиционные аргументы сначала идут в ожидаемые, а остатки в *args 
+# / - всё что слева - это обязано быть позиционными аргументами
 
-
-
-def my_print(a, *args, **kwargs):
+def my_print(a, b, *args, **kwargs):
     print(args)
-    print(a)
-    b += "1"
-    print(b)
-    print(c)
-    #print(kwargs)
-    #print(**kwargs)
+    print(kwargs)
 
 
 if __name__ == "__main__":
-    a, b, c  = "ab", "bc", "cd"
-    my_print()
-    #print(c)
+    my_print(b=2, a=7, c=3)
+
 

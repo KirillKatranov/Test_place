@@ -1,10 +1,13 @@
 
+from functools import wraps
 import time
 
 
 def measure_time(parametr):
     def real_decorator(func):
+        @wraps(func)
         def wrapper(*args, **kwargs):
+            """Docstring decoratores"""
             start = time.time()
             nonlocal parametr 
             if parametr == "POST":
@@ -27,4 +30,4 @@ def some_func(*args, **kwargs):
     print(args[0])
 
 if __name__ == "__main__":
-    print(some_func(), "сек")
+    print(some_func().__doc__)

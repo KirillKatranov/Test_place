@@ -1,6 +1,6 @@
 x = 1 
 def square(n=x):
-    return x ** 2
+    return n ** 2
 
 
 
@@ -12,7 +12,7 @@ if __name__ == "__main__":
     # print(square())
     # print(square1())
     # print(square2())
-    ints =  range(10)
+    ints = range(10)
     for i in map(lambda x : x**2, filter(lambda x: x % 2 == 0, ints)):
         print(i)
 

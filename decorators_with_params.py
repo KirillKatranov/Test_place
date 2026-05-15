@@ -2,7 +2,8 @@
 from functools import wraps
 import time
 
-
+# Здесь уже работает логика не пересечения замыкания.
+# Для каждого нового
 def measure_time(parametr):
     def real_decorator(func):
         @wraps(func)

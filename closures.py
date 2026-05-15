@@ -1,21 +1,23 @@
+# Внутренняя функция, которая возвращается из внешней и имеет доступ к глобальному скоупу
+# Замыкания не пересекаются, а каждый раз создают новый объект функции и запоминают состояние
 
-
-def owner(cat):
+def owner():
     cats = []
-    def inner():
+    def inner(cat):
         cats.append(cat)
         return cats
     return inner
 
-perem = owner('Tom')
-perem1 = owner('Angela')
-print(owner('Tom'))
-print(owner('Tom')())
+perem = owner()
+perem1 = owner()
+print(owner())
+print(owner()('Tom'))
 print(perem)
-print(perem())
+print(perem('Tom'))
+print(perem("Jack"))
 
-print(owner('Angela'))
-print(owner('Angela')())
+print(owner()('Angela'))
 print(perem1)
-print(perem1())
+print(perem1('Angela'))
+print(perem1('Alice'))
 
